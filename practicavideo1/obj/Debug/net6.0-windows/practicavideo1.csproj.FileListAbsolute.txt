@@ -1,0 +1,17 @@
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\bin\Debug\net6.0-windows\practicavideo1.exe
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\bin\Debug\net6.0-windows\practicavideo1.deps.json
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\bin\Debug\net6.0-windows\practicavideo1.runtimeconfig.json
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\bin\Debug\net6.0-windows\practicavideo1.dll
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\bin\Debug\net6.0-windows\ref\practicavideo1.dll
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\bin\Debug\net6.0-windows\practicavideo1.pdb
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.csproj.AssemblyReference.cache
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.Form1.resources
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.csproj.GenerateResource.cache
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.AssemblyInfoInputs.cache
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.AssemblyInfo.cs
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.csproj.CoreCompileInputs.cache
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.dll
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\ref\practicavideo1.dll
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.pdb
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\practicavideo1\obj\Debug\net6.0-windows\practicavideo1.genruntimeconfig.cache
