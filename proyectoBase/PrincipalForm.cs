@@ -1,4 +1,5 @@
 ﻿using proyectoBase.Entidades;
+using proyectoBase.Gestor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace proyectoBase
             InitializeComponent();
             lblBienvenida.Text = "Bienvenido " + usu.NombreDeUsuario;
             lblBienvenida.Visible = true;
+
         }
 
         private void PrincipalForm_Load(object sender, EventArgs e)
@@ -25,7 +27,17 @@ namespace proyectoBase
 
         }
 
-        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnConsultarEncuesta_Click(object sender, EventArgs e)
+        {
+            ConsultarEncuestasForm ventana = new ConsultarEncuestasForm();
+            GestorConsultarEncuesta gestor = new GestorConsultarEncuesta();
+
+            ventana.Show();
+            this.Hide();
+    
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
 
         }
