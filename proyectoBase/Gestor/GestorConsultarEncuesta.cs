@@ -14,12 +14,19 @@ namespace proyectoBase.Gestor
 	{
 		/*******************/
 		private List<Llamada> llamadas;
+		private List<Llamada> llamadasConEncuesta;
 
 		public List<Llamada> LlamadasDelGestor
 		{
 			get => llamadas;
 			set => llamadas = value;
 		}
+		public List<Llamada> LlamadasConEncuestaDelGestor
+		{
+			get => llamadasConEncuesta;
+			set => llamadasConEncuesta = value;
+		}
+
 		// private List<CambioEstado> cambioEstado;
 
 
@@ -327,18 +334,21 @@ namespace proyectoBase.Gestor
 			this.LlamadasDelGestor = llamadas;
 		}
 
-		public void main()
-        {
-
-        }
-		public void buscarLlamadas(DateTime fechainicio, DateTime fechafin) {
-
+		
+		public void buscarLlamadasEncuestasRespondidas(DateTime fechainicio, DateTime fechafin) {
+			List<Llamada> llamadasConEncuesta = new List<Llamada>();
 			foreach (Llamada llamada in this.LlamadasDelGestor)
 			{
-				
+				bool var5 = llamada.esDePeriodo(fechainicio,fechafin);
+				if(var5== true)
+                {
+					llamadasConEncuesta.Add(llamada);
+				}
 			}
+			this.LlamadasConEncuestaDelGestor = llamadasConEncuesta;
+			MessageBox.Show("Llamadas con encuesta exito!");
 		}
-		public void finCU() { }
+
 		public void getDatosLlamada() { }
 		public void opcionConsultaEncuesta() {
 		 }
@@ -347,16 +357,17 @@ namespace proyectoBase.Gestor
 			if (fechainicio <= fechafin)
 			{
 				MessageBox.Show("Es fecha valida");
-				this.buscarLlamadas(fechainicio,fechafin);
+				this.buscarLlamadasEncuestasRespondidas(fechainicio,fechafin);
 			}
 			else
 			{
 				MessageBox.Show("No  Es fecha valida");
 			}
 		}
-		public void pedirPeriodo() { }
+
 		public void tomarSeleccionArchivo() { }
 		public void tomarSeleccionLlamada() { }
 		public void validarPeriodo() { }
+		public void finCU() { }
 	}
 	}

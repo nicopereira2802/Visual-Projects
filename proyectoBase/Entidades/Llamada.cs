@@ -29,43 +29,56 @@ namespace proyectoBase.Entidades
             this.encuestaEnviada = encuestaEnviada;
             this.cliente = cliente;
             this.respuestaDeEncuesta = respuestaDeEncuesta;
+            this.cambioEstado = cambioEstado;
         }
 
         // set & get
-        public string DescripcionOperador 
-        { 
+        public string DescripcionOperador
+        {
             get => descripcionOperador;
-            set => descripcionOperador = value; 
+            set => descripcionOperador = value;
         }
-        public string DetalleEncuesta 
-        { 
+        public string DetalleEncuesta
+        {
             get => detalleEncuesta;
             set => detalleEncuesta = value;
         }
-        public int Duracion 
-        { 
+        public int Duracion
+        {
             get => duracion;
             set => duracion = value;
         }
-        public bool EncuestaEnviada 
-        { 
+        public bool EncuestaEnviada
+        {
             get => encuestaEnviada;
             set => encuestaEnviada = value;
         }
-        public Cliente Llcliente 
-        { 
+        public Cliente Llcliente
+        {
             get => cliente;
             set => cliente = value;
         }
-        public List<RespuestaCliente> RespuestaDeEncuesta 
-        { 
+        public List<RespuestaCliente> RespuestaDeEncuesta
+        {
             get => respuestaDeEncuesta;
             set => respuestaDeEncuesta = value;
         }
         //metodos
-        public void esDePeriodo()
+       
+        public List<CambioEstado> CambioEstado
         {
-            //
+            get => cambioEstado;
+            set => cambioEstado = value;
+        }
+
+        public bool esDePeriodo(DateTime fechainicio, DateTime fechafin)
+        {
+            bool var4 = this.determinarEstadoInicial(fechainicio, fechafin);
+            if (var4 == true)
+            {
+                return true;
+            }
+            return false;
         }
         public void getEstadoActual()
         {
@@ -75,9 +88,34 @@ namespace proyectoBase.Entidades
         {
             //
         }
-        public void tieneEncuestaRespondida()
+        public bool tieneEncuestaEnviada()
         {
-            //
+            if (this.encuestaEnviada == true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool determinarEstadoInicial(DateTime fechainicio, DateTime fechafin)
+        {
+            foreach (CambioEstado cambioEstado in this.cambioEstado)
+            {
+                bool var1 = cambioEstado.GetNombreEstado();
+                if (var1 == true)
+                {
+                    DateTime var2 = cambioEstado.getFechaHoraInicio();
+                    if (var2 >= fechainicio && var2 <= fechafin)
+                    {
+                        bool var3 = tieneEncuestaEnviada();
+                        if (var3 == true)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }

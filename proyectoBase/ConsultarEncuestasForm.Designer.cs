@@ -34,8 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuscarLlamadasPeriodo = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,15 +93,6 @@
             this.btnBuscarLlamadasPeriodo.UseVisualStyleBackColor = true;
             this.btnBuscarLlamadasPeriodo.Click += new System.EventHandler(this.btnBuscarLlamadasPeriodo_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(493, 79);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(545, 426);
-            this.dataGridView1.TabIndex = 6;
-            // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(158, 391);
@@ -112,13 +103,24 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(416, 66);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(637, 478);
+            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
             // ConsultarEncuestasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 571);
-            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnBuscarLlamadasPeriodo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -142,7 +144,7 @@
         private Label label2;
         private Label label3;
         private Button btnBuscarLlamadasPeriodo;
-        private DataGridView dataGridView1;
         private Button btnCancelar;
+        private DataGridView dataGridView1;
     }
 }

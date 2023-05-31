@@ -26,11 +26,15 @@ namespace proyectoBase.Entidades
             get => estado;
             set => estado = value;
         }
+        public DateTime getFechaHoraInicio()
+        {
+            return this.fechaHoraInicio;
+        }
 
-        public string GetNombreEstado()
+        public bool GetNombreEstado()
         {
             //
-            return (this.Estado.getNombre());
+            return estado.esIniciada();
         }
 
         public bool esEstadoInicial()
