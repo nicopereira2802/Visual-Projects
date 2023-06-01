@@ -97,13 +97,21 @@ namespace proyectoBase.Entidades
             return false;
         }
 
-        public void getDatos(Llamada llamada)
+        public List<String> getDatos(Llamada llamada)
         {
-            this.cliente.getNombreCliente();
-            this.determinarUltimoEstado(llamada);
-            this.getDuracion();
-            this.getRespuestas(llamada);
-
+            List<String> listaDeDatos = new(); 
+            string clienteDeLlamada = this.cliente.getNombreCliente();
+            bool estadoFinalLlamada = this.determinarUltimoEstado(llamada);
+            string estadoStringLlamada = "Finalizada";
+            if(estadoFinalLlamada == false)
+            {
+                estadoStringLlamada = "Inicializada sin Finalizar";
+            }
+            int duracionLlamada = this.getDuracion();
+            listaDeDatos.Add(clienteDeLlamada);
+            listaDeDatos.Add(estadoStringLlamada);
+            listaDeDatos.Add(Convert.ToString(duracionLlamada));
+            return listaDeDatos;
             
         }
         public bool determinarUltimoEstado(Llamada llamada)
@@ -124,17 +132,21 @@ namespace proyectoBase.Entidades
             return duracion;
         }
 
-        public void getRespuestas(Llamada llamada)
-        {
-            //List<RespuestaCliente> listaRespuestaC = new();
+        public List<String> getRespuestas(Llamada llamada)
+        {   
+
+            List<String> listaRespuestasPreEnc = new();
             foreach (RespuestaCliente respuestaC in this.respuestaDeEncuesta)
             {
-                respuestaC.getDescripcionRta();
-                //listaRespuestaC.Add(respuestaC);
-                respuestaC.RespuestaPosible.getPregunta();
-                respuestaC.RespuestaPosible.Pregunta.getEncuesta();
-                MessageBox.Show(respuestaC.getDescripcionRta());
+                string descResp = respuestaC.getDescripcionRta();
+                listaRespuestasPreEnc.Add(descResp);
+                string descPregunta = respuestaC.RespuestaPosible.getPregunta();
+                listaRespuestasPreEnc.Add(descPregunta);
+                string descEnc = respuestaC.RespuestaPosible.Pregunta.getEncuesta();
+                listaRespuestasPreEnc.Add(descEnc);
+               
             }
+            return listaRespuestasPreEnc;
             
         }
 

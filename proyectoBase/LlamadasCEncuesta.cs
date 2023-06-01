@@ -51,5 +51,10 @@ namespace proyectoBase
         {
             dataGridView1.DataSource = ListaDelGestor;
         }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

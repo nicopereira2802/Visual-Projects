@@ -39,3 +39,4 @@ C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\Visual-Projects\proyectoBase\o
 C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\Visual-Projects\proyectoBase\obj\Debug\net6.0-windows\proyectoBase.ConsultarEncuestasForm.resources
 C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\proyectoBase\obj\Debug\net6.0-windows\proyectoBase.ConsultarEncuestasForm.resources
 C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\Visual-Projects\proyectoBase\obj\Debug\net6.0-windows\proyectoBase.LlamadasCEncuesta.resources
+C:\Users\nicolas\Documents\aplicacionesPRUEBAPPAI\Visual-Projects\proyectoBase\obj\Debug\net6.0-windows\proyectoBase.Pantalla_Generar_Csv.resources

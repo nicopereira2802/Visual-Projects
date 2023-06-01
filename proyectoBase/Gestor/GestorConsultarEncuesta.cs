@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using proyectoBase.Entidades;
 using proyectoBase;
+using System.Threading;
 
 
 
@@ -16,6 +17,9 @@ namespace proyectoBase.Gestor
 		public List<Llamada> llamadas;
 		public List<Llamada> llamadasConEncuesta;
 		public Llamada llamadaSeleccionada;
+		public List<string> listaFinalDatos;
+		public List<string> listaEncabezado;
+		public List<string> listaPreguntas;
 
 		public List<Llamada> LlamadasDelGestor
 		{
@@ -31,6 +35,21 @@ namespace proyectoBase.Gestor
 		{
 			get => llamadaSeleccionada;
 			set => llamadaSeleccionada = value;
+		}
+		public List<string> ListaFinalDeDatos
+		{
+			get => listaFinalDatos;
+			set => listaFinalDatos = value;
+		}
+		public List<string> ListaEncabezado
+		{
+			get => listaEncabezado;
+			set => listaEncabezado = value;
+		}
+		public List<string> ListaPreguntas
+		{
+			get => listaPreguntas;
+			set => listaPreguntas = value;
 		}
 
 		// private List<CambioEstado> cambioEstado;
@@ -180,7 +199,7 @@ namespace proyectoBase.Gestor
 
 
 			RespuestaPosible respuestaPosible81 = new RespuestaPosible("En una escala del 1 al 10, ¿qué tan satisfecho estás con la calidad de la llamada que recibiste? 1 siendo muy insatisfecho y 10 siendo muy satisfecho", 432);
-			RespuestaPosible respuestaPosible82 = new RespuestaPosible("¿Recibiste la información que necesitabas durante la llamada? 1: Sí 2: No",321);
+			RespuestaPosible respuestaPosible82 = new RespuestaPosible("¿Recibiste la información que necesitabas durante la llamada? 1: Sí 2: No", 321);
 			List<RespuestaPosible> respuestaPregunta8 = new List<RespuestaPosible>();
 			respuestaPregunta8.Add(respuestaPosible81);
 			respuestaPregunta8.Add(respuestaPosible82);
@@ -213,6 +232,33 @@ namespace proyectoBase.Gestor
 			Pregunta preguntas8 = new Pregunta("¿Recibiste una respuesta o solución satisfactoria a tu consulta durante la llamada?", respuestaPregunta8);
 			Pregunta preguntas9 = new Pregunta("¿Experimentaste algún problema de conexión o calidad de sonido durante la llamada?", respuestaPregunta9);
 			Pregunta preguntas10 = new Pregunta("¿El tiempo de espera para ser atendido por un representante fue razonable?", respuestaPregunta10);
+
+			respuestaPosible11.Pregunta = preguntas1;
+			respuestaPosible12.Pregunta = preguntas1;
+			respuestaPosible13.Pregunta = preguntas1;
+			respuestaPosible21.Pregunta = preguntas2;
+			respuestaPosible22.Pregunta = preguntas2;
+			respuestaPosible23.Pregunta = preguntas2;
+			respuestaPosible31.Pregunta = preguntas3;
+			respuestaPosible32.Pregunta = preguntas3;
+			respuestaPosible41.Pregunta = preguntas4;
+			respuestaPosible42.Pregunta = preguntas4;
+			respuestaPosible43.Pregunta = preguntas4;
+			respuestaPosible51.Pregunta = preguntas5;
+			respuestaPosible52.Pregunta = preguntas5;
+			respuestaPosible53.Pregunta = preguntas5;
+			respuestaPosible61.Pregunta = preguntas6;
+			respuestaPosible62.Pregunta = preguntas6;
+			respuestaPosible63.Pregunta = preguntas6;
+			respuestaPosible71.Pregunta = preguntas7;
+			respuestaPosible72.Pregunta = preguntas7;
+			respuestaPosible73.Pregunta = preguntas7;
+			respuestaPosible81.Pregunta = preguntas8;
+			respuestaPosible82.Pregunta = preguntas8;
+			respuestaPosible91.Pregunta = preguntas9;
+			respuestaPosible92.Pregunta = preguntas9;
+			respuestaPosible101.Pregunta = preguntas10;
+			respuestaPosible102.Pregunta = preguntas10;
 			// -------------------------------------- ENCUESTAS -----------------------------------------------------
 
 
@@ -235,8 +281,19 @@ namespace proyectoBase.Gestor
 			Encuesta encuesta2 = new Encuesta("Encuesta 2", preguntasEncuesta2);
 
 
-			// ATENCION!!!!!!!!
+			preguntas1.Encuesta = encuesta1;
+			preguntas2.Encuesta = encuesta1;
+			preguntas3.Encuesta = encuesta1;
+			preguntas4.Encuesta = encuesta1;
+			preguntas5.Encuesta = encuesta1;
+			preguntas6.Encuesta = encuesta2;
+			preguntas7.Encuesta = encuesta2;
+			preguntas8.Encuesta = encuesta2;
+			preguntas9.Encuesta = encuesta2;
+			preguntas10.Encuesta = encuesta2;
 
+			// ATENCION!!!!!!!!
+			
 			// Carlos faltaria realizar RdC y Llamada
 
 			// PARA MI EL SISTEMA EN TOTAL DEBERIA TENER MINIMO 10 LLAMADAS (faltan clientes)
@@ -349,11 +406,11 @@ namespace proyectoBase.Gestor
 				if(var5 == true)
                 {
 					llamadasConEncuesta.Add(llamada);
-					MessageBox.Show("Se agrego un objeto");
+				
 				}       
                 
 			}
-			MessageBox.Show("Llamadas con encuesta exito!");
+	
 			//ConsultarEncuestasForm.mostrarLlamadas(LlamadasConEncuestaDelGestor);
 			//LlamadasCEncuesta formulario = new LlamadasCEncuesta(LlamadasConEncuestaDelGestor);
 			//formulario.Show();
@@ -375,22 +432,47 @@ namespace proyectoBase.Gestor
 			{
 				MessageBox.Show("No  Es fecha valida");
 				return llamadaCEncuesta;
+				
 			}
 		}
 
 		public void tomarSeleccionArchivo() { }
-		public void tomarSeleccionLlamada(Llamada llamadaSeleccionada) {
-			MessageBox.Show("TOMAR LLAMADA");
-			buscarDatosLlamada(llamadaSeleccionada);
+		public List<string> tomarSeleccionLlamada(Llamada llamadaSeleccionada) {
+			List<string> listaTotal2 = new();
+			listaTotal2= buscarDatosLlamada(llamadaSeleccionada);
+			return listaTotal2;
+
+		}
+		public List<string> buscarDatosLlamada(Llamada llamadaSeleccionada) {
+			List<string> listaTotal = new();
+			List<string> lista1 = new();
+			List<string> lista2 = new();
+			lista1 = llamadaSeleccionada.getDatos(llamadaSeleccionada);
+			lista2 = llamadaSeleccionada.getRespuestas(llamadaSeleccionada);
+			listaTotal = lista1.Concat(lista2).ToList();
+			this.ListaPreguntas = lista2;
+			this.ListaEncabezado = lista1;
+			this.ListaFinalDeDatos = listaTotal;
+			return listaTotal;
+		}
+		public List<string> mostrarDatosLlamada(List<string> ListaFinal)
+        {
+			return this.ListaFinalDeDatos;
+		}
+		public void validarPeriodo() { 
+		}
+		public ReporteCsv generarCsv()
+        {
+			ReporteCsv reporteCsv = new(this.ListaEncabezado,this.ListaPreguntas);
+			return reporteCsv;
 			
 
 		}
-		public void buscarDatosLlamada(Llamada llamadaSeleccionada) {
-			MessageBox.Show("BUSCAR DE LLAMADA");
-			llamadaSeleccionada.getDatos(llamadaSeleccionada);
+		public void finCU() {
+			MessageBox.Show("Fin de CU,ya pueden aplaudir");
+		
 		}
-		public void validarPeriodo() { }
-		public void finCU() { }
+
 		
 	}
 

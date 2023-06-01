@@ -8,9 +8,9 @@ namespace proyectoBase.Entidades
 {
     public class Cliente
     {
-        private int dni;
-        private string nombreCompleto;
-        private int nroCelular;
+        public int dni;
+        public string nombreCompleto;
+        public int nroCelular;
 
         public Cliente(int dni, string nombreCompleto, int nroCelular)
         {

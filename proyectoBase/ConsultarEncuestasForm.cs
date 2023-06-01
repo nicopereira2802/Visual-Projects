@@ -17,45 +17,29 @@ namespace proyectoBase
     {
         //public List<Llamada> ListaDelGestor;
         GestorConsultarEncuesta gestorConsultarEncuesta = new GestorConsultarEncuesta();
-       
         public ConsultarEncuestasForm()
         {
             InitializeComponent();
-          
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
 
         public void ConsultarEncuestasForm_Load(object sender, EventArgs e)
         {
-            // Inicializar la lista de clases con datos de ejemplo
-            // Asignar la lista de clases al control DataGridView
-            /*
-            foreach (var objeto in ListaDelGestor)
-            {
-                // Agregar una nueva fila al DataGridView
-                int rowIndex = dataGridView2.Rows.Add();
-
-                // Obtener la fila recién agregada
-                DataGridViewRow row = dataGridView2.Rows[rowIndex];
-
-                // Asignar los valores de los atributos del objeto a las celdas de la fila
-                row.Cells["DescripcionO"].Value = objeto.DescripcionOperador;
-                row.Cells["DetalleAccion"].Value = objeto.DetalleEncuesta;
-                // Continuar para asignar los valores de los demás atributos
-            }*/
+     
 
         }
 
         public void btnBuscarLlamadasPeriodo_Click(object sender, EventArgs e)
         {
-
+            
             DateTime fechaInicio = dtmFechaInicio.Value;
             DateTime fechaFin = dtmFechaFin.Value;
 
             List<Llamada> llamadasEPantalla = gestorConsultarEncuesta.validarPeriodo(fechaInicio, fechaFin);
             if (llamadasEPantalla.Count == 0)
             {
-                MessageBox.Show("NO HAY LLAMADAS EN EL PERIODO");
+                MessageBox.Show("NO HAY LLAMADAS CON ENCUESTAS EN EL PERIODO");
             }
             else
             {
@@ -66,37 +50,39 @@ namespace proyectoBase
 
         public void mostrarLlamadas(List<Llamada> llamadasCEncuesta)
         {
+            // Columna para la propiedad Nombre de ClasePrincipal
+              // Columna para el atributo de OtraClase
             dataGridView2.DataSource = llamadasCEncuesta;
-            foreach (Llamada x in llamadasCEncuesta)
+            dataGridView2.Columns["Llcliente"].Visible = true;
+            
+            //dataGridView2.Columns["LlCliente"].DataPropertyName = llamadasCEncuesta.cliente.NombreDeCliente;
+            /*foreach (Llamada x in llamadasCEncuesta)
+            
             {
                 
                 MessageBox.Show("llamada con encuesta goooool");
-                //DataGridViewTextBoxColumn DescripcionOperador = new DataGridViewTextBoxColumn();
-                //DescripcionOperador.DataPropertyName = "DescripcionO";
-                //DescripcionOperador.HeaderText = "DescripcionO";
-                //dataGridView2.Columns.Add(DescripcionOperador);
-                /*
+        
+            }*/
+            foreach (var objeto in llamadasCEncuesta)
+            {
                 // Agregar una nueva fila al DataGridView
-                int rowIndex = dataGridView2.Rows.Add();
+                int rowIndex = dataGridView3.Rows.Add();
 
                 // Obtener la fila recién agregada
-                DataGridViewRow row = dataGridView2.Rows[rowIndex];
+                DataGridViewRow row = dataGridView3.Rows[rowIndex];
 
                 // Asignar los valores de los atributos del objeto a las celdas de la fila
-                row.Cells["DescripcionO"].Value = x.DescripcionOperador;
-                row.Cells["DetalleAccion"].Value = x.DetalleEncuesta;
-                row.Cells["EncuestaE"].Value = x.EncuestaEnviada;
-                row.Cells["Duracion"].Value = x.Duracion;
-                row.Cells["Cliente"].Value = x.Llcliente.NombreDeCliente;
+                row.Cells["Cliente"].Value = objeto.Llcliente.NombreDeCliente;
 
-                // Continuar para asignar los valores de los demás atributos*/
+                // Continuar para asignar los valores de los demás atributos
             }
-           
             dataGridView2.SelectionChanged += DataGridView2_SelectionChanged;
+
         }
         private void DataGridView2_SelectionChanged(object sender, EventArgs e)
-        {
+        {  
             // Obtener la fila seleccionada
+            //dataGridView2.Rows.Insert(0,1);
             DataGridViewRow selectedRow = dataGridView2.CurrentRow;
 
             // Verificar si se ha seleccionado una fila
@@ -109,8 +95,16 @@ namespace proyectoBase
                 // ...
                 // Ejemplo de mostrar una propiedad del objeto en un MessageBox
                 MessageBox.Show($"Se ha seleccionado el objeto: Propiedad1={llamadaSeleccionado.DescripcionOperador}");
-                gestorConsultarEncuesta.tomarSeleccionLlamada(llamadaSeleccionado);
+                List<string> listaLlamadaDatos = gestorConsultarEncuesta.tomarSeleccionLlamada(llamadaSeleccionado);
+                mostrarDatosLLamada(listaLlamadaDatos);
             }
+        }
+        public void mostrarDatosLLamada(List<string> listaLlamadaDatos)
+        {
+            listBox1.DataSource = listaLlamadaDatos;
+
+            // Actualizar la vista del DataGridView
+            
         }
         public void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -118,7 +112,12 @@ namespace proyectoBase
             this.Hide();
         }
 
-
-
+        private void btnGenerarCsv_Click(object sender, EventArgs e)
+        {
+            Pantalla_Generar_Csv ventana = new Pantalla_Generar_Csv(gestorConsultarEncuesta);
+            this.Hide();
+            ventana.Show();
+            
+        }
     }
 }
