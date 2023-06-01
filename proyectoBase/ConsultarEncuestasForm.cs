@@ -15,16 +15,34 @@ namespace proyectoBase
     public partial class ConsultarEncuestasForm : Form
 
     {
-
+        //public List<Llamada> ListaDelGestor;
         GestorConsultarEncuesta gestorConsultarEncuesta = new GestorConsultarEncuesta();
+       
         public ConsultarEncuestasForm()
         {
             InitializeComponent();
-
+          
         }
+
 
         public void ConsultarEncuestasForm_Load(object sender, EventArgs e)
         {
+            // Inicializar la lista de clases con datos de ejemplo
+            // Asignar la lista de clases al control DataGridView
+            /*
+            foreach (var objeto in ListaDelGestor)
+            {
+                // Agregar una nueva fila al DataGridView
+                int rowIndex = dataGridView2.Rows.Add();
+
+                // Obtener la fila recién agregada
+                DataGridViewRow row = dataGridView2.Rows[rowIndex];
+
+                // Asignar los valores de los atributos del objeto a las celdas de la fila
+                row.Cells["DescripcionO"].Value = objeto.DescripcionOperador;
+                row.Cells["DetalleAccion"].Value = objeto.DetalleEncuesta;
+                // Continuar para asignar los valores de los demás atributos
+            }*/
 
         }
 
@@ -33,30 +51,74 @@ namespace proyectoBase
 
             DateTime fechaInicio = dtmFechaInicio.Value;
             DateTime fechaFin = dtmFechaFin.Value;
-            gestorConsultarEncuesta.validarPeriodo(fechaInicio, fechaFin);
-        }
 
-        
-        public void btnCancelar_Click(object sender, EventArgs e)
-        {
-           
-            this.Hide();
-        }
-  
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Configurar las columnas de la grilla
-            dataGridView1.Columns.Add("Columna1", "Título1");
-            dataGridView1.Columns.Add("Columna2", "Título2");
-            // Agregar más columnas según sea necesario
-
-            // Iterar sobre la lista de llamadas y agregar las filas correspondientes a la grilla
-            foreach (Llamada llamada in gestorConsultarEncuesta.LlamadasConEncuestaDelGestor)
+            List<Llamada> llamadasEPantalla = gestorConsultarEncuesta.validarPeriodo(fechaInicio, fechaFin);
+            if (llamadasEPantalla.Count == 0)
             {
-                MessageBox.Show("Hola Mundo");
-                dataGridView1.Rows.Add(llamada.Duracion, llamada.EncuestaEnviada);
+                MessageBox.Show("NO HAY LLAMADAS EN EL PERIODO");
+            }
+            else
+            {
+                mostrarLlamadas(llamadasEPantalla);
+            }
+            
+        }
+
+        public void mostrarLlamadas(List<Llamada> llamadasCEncuesta)
+        {
+            dataGridView2.DataSource = llamadasCEncuesta;
+            foreach (Llamada x in llamadasCEncuesta)
+            {
+                
+                MessageBox.Show("llamada con encuesta goooool");
+                DataGridViewTextBoxColumn DescripcionOperador = new DataGridViewTextBoxColumn();
+                //DescripcionOperador.DataPropertyName = "DescripcionO";
+                //DescripcionOperador.HeaderText = "DescripcionO";
+                dataGridView2.Columns.Add(DescripcionOperador);
+                /*
+                // Agregar una nueva fila al DataGridView
+                int rowIndex = dataGridView2.Rows.Add();
+
+                // Obtener la fila recién agregada
+                DataGridViewRow row = dataGridView2.Rows[rowIndex];
+
+                // Asignar los valores de los atributos del objeto a las celdas de la fila
+                row.Cells["DescripcionO"].Value = x.DescripcionOperador;
+                row.Cells["DetalleAccion"].Value = x.DetalleEncuesta;
+                row.Cells["EncuestaE"].Value = x.EncuestaEnviada;
+                row.Cells["Duracion"].Value = x.Duracion;
+                row.Cells["Cliente"].Value = x.Llcliente.NombreDeCliente;
+
+                // Continuar para asignar los valores de los demás atributos*/
+            }
+           
+            dataGridView2.SelectionChanged += DataGridView2_SelectionChanged;
+        }
+        private void DataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            // Obtener la fila seleccionada
+            DataGridViewRow selectedRow = dataGridView2.CurrentRow;
+
+            // Verificar si se ha seleccionado una fila
+            if (selectedRow != null)
+            {
+                // Obtener los valores de las celdas de la fila seleccionada
+                Llamada llamadaSeleccionado = (Llamada)selectedRow.DataBoundItem;
+
+                // Realizar cualquier otra acción que necesites con el objeto seleccionado
+                // ...
+                // Ejemplo de mostrar una propiedad del objeto en un MessageBox
+                MessageBox.Show($"Se ha seleccionado el objeto: Propiedad1={llamadaSeleccionado.DescripcionOperador}");
+                gestorConsultarEncuesta.tomarSeleccionLlamada(llamadaSeleccionado);
             }
         }
+        public void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();
+        }
+
+
+
     }
 }

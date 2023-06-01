@@ -8,8 +8,9 @@ namespace proyectoBase.Entidades
 {
     public class Pregunta
     {
-        private string pregunta;
-        private List<RespuestaPosible> respuesta;
+        public string pregunta;
+        public List<RespuestaPosible> respuesta;
+        public Encuesta Encuesta { get; set; }
 
         public Pregunta(string pregunta, List<RespuestaPosible> respuesta)
         {
@@ -26,6 +27,14 @@ namespace proyectoBase.Entidades
 
         {   get => respuesta;
             set => respuesta = value;
+        }
+        public string getDescripcion()
+        {
+            return this.pregunta;
+        }
+        public string getEncuesta()
+        {
+            return this.Encuesta.getDescripcionEncuesta();
         }
     }
 }

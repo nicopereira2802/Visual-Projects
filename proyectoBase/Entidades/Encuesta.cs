@@ -31,5 +31,6 @@ namespace proyectoBase.Entidades
         {
             return this.descripcion;
         }
+       
     }
 }

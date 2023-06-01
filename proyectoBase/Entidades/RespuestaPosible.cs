@@ -9,9 +9,9 @@ namespace proyectoBase.Entidades
     public class RespuestaPosible
     {
 
-        private string descripcion;
-        private int valor;
-
+        public string descripcion;
+        public int valor;
+        public Pregunta Pregunta { get; set; }
         public RespuestaPosible(string descripcion, int valor)
         {
             this.valor = valor;
@@ -33,6 +33,10 @@ namespace proyectoBase.Entidades
         public string getDescripcionRta()
         {
             return this.descripcion;
+        }
+        public string getPregunta()
+        {
+            return Pregunta.getDescripcion();
         }
     }
 }

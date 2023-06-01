@@ -13,8 +13,9 @@ namespace proyectoBase.Gestor
 	public class GestorConsultarEncuesta
 	{
 		/*******************/
-		private List<Llamada> llamadas;
-		private List<Llamada> llamadasConEncuesta;
+		public List<Llamada> llamadas;
+		public List<Llamada> llamadasConEncuesta;
+		public Llamada llamadaSeleccionada;
 
 		public List<Llamada> LlamadasDelGestor
 		{
@@ -25,6 +26,11 @@ namespace proyectoBase.Gestor
 		{
 			get => llamadasConEncuesta;
 			set => llamadasConEncuesta = value;
+		}
+		public Llamada LlamadaSeleccionadaGestor
+		{
+			get => llamadaSeleccionada;
+			set => llamadaSeleccionada = value;
 		}
 
 		// private List<CambioEstado> cambioEstado;
@@ -46,43 +52,43 @@ namespace proyectoBase.Gestor
 			// -------------------------------------- CAMBIO ESTADO --------------------------------------------------
 			
 			//cambios de  estados para la llamada1 
-			CambioEstado cambioEstado11 = new CambioEstado(DateTime.Parse("2015-01-12"), estado1);
-			CambioEstado cambioEstado12 = new CambioEstado(DateTime.Parse("2015-03-23"), estado2);
+			CambioEstado cambioEstado11 = new CambioEstado(DateTime.Parse("2023-05-12"), estado1);
+			CambioEstado cambioEstado12 = new CambioEstado(DateTime.Parse("2023-05-23"), estado2);
 			List<CambioEstado> cambioEstado1 = new List <CambioEstado>();
 			cambioEstado1.Add(cambioEstado11);
 			cambioEstado1.Add(cambioEstado12);
 
 			//cambios de estados para la llamada2
-			CambioEstado cambioEstado21 = new CambioEstado(DateTime.Parse("2015-03-01"), estado1);
-			CambioEstado cambioEstado22 = new CambioEstado(DateTime.Parse("2015-03-21"), estado2);
+			CambioEstado cambioEstado21 = new CambioEstado(DateTime.Parse("2023-05-01"), estado1);
+			CambioEstado cambioEstado22 = new CambioEstado(DateTime.Parse("2023-05-21"), estado2);
 			List<CambioEstado> cambioEstado2 = new List <CambioEstado>();
 			cambioEstado2.Add(cambioEstado21);
 			cambioEstado2.Add(cambioEstado22);
 
 			//cambios de estados para la llamada 3
-			CambioEstado cambioEstado31 = new CambioEstado(DateTime.Parse("2015-04-12"), estado1);
-			CambioEstado cambioEstado32 = new CambioEstado(DateTime.Parse("2015-02-13"), estado2);
+			CambioEstado cambioEstado31 = new CambioEstado(DateTime.Parse("2023-05-12"), estado1);
+			CambioEstado cambioEstado32 = new CambioEstado(DateTime.Parse("2023-06-13"), estado2);
 			List<CambioEstado> cambioEstado3 = new List <CambioEstado>();
 			cambioEstado3.Add(cambioEstado31);
 			cambioEstado3.Add(cambioEstado32);
 
 			// Cambios de estados para la llamada 4
-			CambioEstado cambioEstado41 = new CambioEstado(DateTime.Parse("2015-05-05"), estado1);
-			CambioEstado cambioEstado42 = new CambioEstado(DateTime.Parse("2015-05-10"), estado2);
+			CambioEstado cambioEstado41 = new CambioEstado(DateTime.Parse("2023-05-05"), estado1);
+			CambioEstado cambioEstado42 = new CambioEstado(DateTime.Parse("2023-05-10"), estado2);
 			List<CambioEstado> cambioEstado4 = new List<CambioEstado>();
 			cambioEstado4.Add(cambioEstado41);
 			cambioEstado4.Add(cambioEstado42);
 
 			// Cambios de estados para la llamada 5
-			CambioEstado cambioEstado51 = new CambioEstado(DateTime.Parse("2015-06-20"), estado1);
-			CambioEstado cambioEstado52 = new CambioEstado(DateTime.Parse("2015-07-01"), estado2);
+			CambioEstado cambioEstado51 = new CambioEstado(DateTime.Parse("2023-06-20"), estado1);
+			CambioEstado cambioEstado52 = new CambioEstado(DateTime.Parse("2023-07-01"), estado2);
 			List<CambioEstado> cambioEstado5 = new List<CambioEstado>();
 			cambioEstado5.Add(cambioEstado51);
 			cambioEstado5.Add(cambioEstado52);
 
 			// Cambios de estados para la llamada 6
-			CambioEstado cambioEstado61 = new CambioEstado(DateTime.Parse("2015-08-15"), estado1);
-			CambioEstado cambioEstado62 = new CambioEstado(DateTime.Parse("2015-09-05"), estado2);
+			CambioEstado cambioEstado61 = new CambioEstado(DateTime.Parse("2023-08-15"), estado1);
+			CambioEstado cambioEstado62 = new CambioEstado(DateTime.Parse("2023-09-05"), estado2);
 			List<CambioEstado> cambioEstado6 = new List<CambioEstado>();
 			cambioEstado6.Add(cambioEstado61);
 			cambioEstado6.Add(cambioEstado62);
@@ -335,39 +341,57 @@ namespace proyectoBase.Gestor
 		}
 
 		
-		public void buscarLlamadasEncuestasRespondidas(DateTime fechainicio, DateTime fechafin) {
+		public List<Llamada> buscarLlamadasEncuestasRespondidas(DateTime fechainicio, DateTime fechafin) {
 			List<Llamada> llamadasConEncuesta = new List<Llamada>();
 			foreach (Llamada llamada in this.LlamadasDelGestor)
 			{
 				bool var5 = llamada.esDePeriodo(fechainicio,fechafin);
-				if(var5== true)
+				if(var5 == true)
                 {
 					llamadasConEncuesta.Add(llamada);
-				}
+					MessageBox.Show("Se agrego un objeto");
+				}       
+                
 			}
-			this.LlamadasConEncuestaDelGestor = llamadasConEncuesta;
 			MessageBox.Show("Llamadas con encuesta exito!");
+			//ConsultarEncuestasForm.mostrarLlamadas(LlamadasConEncuestaDelGestor);
+			//LlamadasCEncuesta formulario = new LlamadasCEncuesta(LlamadasConEncuestaDelGestor);
+			//formulario.Show();
+			return llamadasConEncuesta;
 		}
 
-		public void getDatosLlamada() { }
 		public void opcionConsultaEncuesta() {
-		 }
-		public void validarPeriodo(DateTime fechainicio, DateTime fechafin)
+		}
+		public List<Llamada> validarPeriodo(DateTime fechainicio, DateTime fechafin)
 		{
+			List<Llamada> llamadaCEncuesta = new List<Llamada>();
 			if (fechainicio <= fechafin)
 			{
 				MessageBox.Show("Es fecha valida");
-				this.buscarLlamadasEncuestasRespondidas(fechainicio,fechafin);
+				llamadaCEncuesta = this.buscarLlamadasEncuestasRespondidas(fechainicio,fechafin);
+				return llamadaCEncuesta;
 			}
 			else
 			{
 				MessageBox.Show("No  Es fecha valida");
+				return llamadaCEncuesta;
 			}
 		}
 
 		public void tomarSeleccionArchivo() { }
-		public void tomarSeleccionLlamada() { }
+		public void tomarSeleccionLlamada(Llamada llamadaSeleccionada) {
+			MessageBox.Show("TOMAR LLAMADA");
+			buscarDatosLlamada(llamadaSeleccionada);
+			
+
+		}
+		public void buscarDatosLlamada(Llamada llamadaSeleccionada) {
+			MessageBox.Show("BUSCAR DE LLAMADA");
+			llamadaSeleccionada.getDatos(llamadaSeleccionada);
+		}
 		public void validarPeriodo() { }
 		public void finCU() { }
+		
 	}
-	}
+
+}

@@ -44,7 +44,7 @@ namespace proyectoBase.Entidades
 
         public bool esUltimoEstado()
         {
-            return (this.Estado.esFinalizada());
+            return Estado.esFinalizada();
         }
 
     }

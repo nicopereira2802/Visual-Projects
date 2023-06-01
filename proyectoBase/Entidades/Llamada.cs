@@ -97,6 +97,47 @@ namespace proyectoBase.Entidades
             return false;
         }
 
+        public void getDatos(Llamada llamada)
+        {
+            this.cliente.getNombreCliente();
+            this.determinarUltimoEstado(llamada);
+            this.getDuracion();
+            this.getRespuestas(llamada);
+
+            
+        }
+        public bool determinarUltimoEstado(Llamada llamada)
+        {
+            foreach(CambioEstado cambioEstado in this.cambioEstado)
+            {
+                bool var7 = cambioEstado.esUltimoEstado();
+                if (var7 == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int getDuracion()
+        {
+            return duracion;
+        }
+
+        public void getRespuestas(Llamada llamada)
+        {
+            //List<RespuestaCliente> listaRespuestaC = new();
+            foreach (RespuestaCliente respuestaC in this.respuestaDeEncuesta)
+            {
+                respuestaC.getDescripcionRta();
+                //listaRespuestaC.Add(respuestaC);
+                respuestaC.RespuestaPosible.getPregunta();
+                respuestaC.RespuestaPosible.Pregunta.getEncuesta();
+                MessageBox.Show(respuestaC.getDescripcionRta());
+            }
+            
+        }
+
         public bool determinarEstadoInicial(DateTime fechainicio, DateTime fechafin)
         {
             foreach (CambioEstado cambioEstado in this.cambioEstado)

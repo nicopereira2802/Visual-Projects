@@ -27,6 +27,10 @@ namespace proyectoBase.Entidades
             get => respuestaPosible; 
             set => respuestaPosible = value; 
         }
+        public string getDescripcionRta()
+        {
+             return respuestaPosible.getDescripcionRta();
+        }
         //public 
     }
 }

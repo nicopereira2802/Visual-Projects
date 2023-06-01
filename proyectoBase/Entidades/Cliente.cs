@@ -34,5 +34,9 @@ namespace proyectoBase.Entidades
             get => nroCelular;
             set => nroCelular = value;
         }
+        public string getNombreCliente()
+        {
+            return this.nombreCompleto;
+        }
     }
 }

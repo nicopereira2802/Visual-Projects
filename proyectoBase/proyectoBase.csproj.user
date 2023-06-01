@@ -4,6 +4,9 @@
     <Compile Update="ConsultarEncuestasForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="LlamadasCEncuesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
