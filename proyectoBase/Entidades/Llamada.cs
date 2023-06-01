@@ -150,6 +150,18 @@ namespace proyectoBase.Entidades
             
         }
 
+        /* 
+         
+
+
+         ATENCIONNN!!!!!!!!!!!!!
+        
+         Aqui abajo comienza la verificacion de estado inicial tiene que ser con getdate actual y comparar con el date de todos los cambios de estados y ver la 
+        ultima fecha osea la actual 
+        
+
+         
+         */
         public bool determinarEstadoInicial(DateTime fechainicio, DateTime fechafin)
         {
             foreach (CambioEstado cambioEstado in this.cambioEstado)

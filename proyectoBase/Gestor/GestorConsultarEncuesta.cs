@@ -465,6 +465,11 @@ namespace proyectoBase.Gestor
         {
 			ReporteCsv reporteCsv = new(this.ListaEncabezado,this.ListaPreguntas);
 			return reporteCsv;
+			/*  
+			 
+			 ATENCION!!!! SE DEBE GENERRAR UN CSV COOMO UN ARCHIVO 
+			USANDO LIBRERIAS Y METODOS DE CREACION LUEGO ESE ARCHIVO DEBE QUEDAR EN ALGUNA CARPETA DE TU ORDENADOR 
+			 */
 			
 
 		}
