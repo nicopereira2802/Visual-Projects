@@ -19,17 +19,6 @@ namespace proyectoBase.Entidades
 
         }
 
-        public string Descripcion 
-        { 
-            get => descripcion;
-            set => descripcion = value;
-        }
-        public int Valor 
-        { 
-            get => valor;
-            set => valor = value; 
-        }
-
         public string getDescripcionRta()
         {
             return this.descripcion;
@@ -38,5 +27,6 @@ namespace proyectoBase.Entidades
         {
             return Pregunta.getDescripcion();
         }
+        
     }
 }

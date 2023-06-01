@@ -71,10 +71,10 @@ namespace proyectoBase
             {
                 
                 MessageBox.Show("llamada con encuesta goooool");
-                DataGridViewTextBoxColumn DescripcionOperador = new DataGridViewTextBoxColumn();
+                //DataGridViewTextBoxColumn DescripcionOperador = new DataGridViewTextBoxColumn();
                 //DescripcionOperador.DataPropertyName = "DescripcionO";
                 //DescripcionOperador.HeaderText = "DescripcionO";
-                dataGridView2.Columns.Add(DescripcionOperador);
+                //dataGridView2.Columns.Add(DescripcionOperador);
                 /*
                 // Agregar una nueva fila al DataGridView
                 int rowIndex = dataGridView2.Rows.Add();

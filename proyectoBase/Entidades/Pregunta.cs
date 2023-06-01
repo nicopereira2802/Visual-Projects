@@ -15,26 +15,17 @@ namespace proyectoBase.Entidades
         public Pregunta(string pregunta, List<RespuestaPosible> respuesta)
         {
             this.pregunta = pregunta;
-            this.respuesta = respuesta;
+            this.respuesta = new List<RespuestaPosible>();
         }
 
-        public string SetGetPregunta 
-        {
-            get => pregunta;
-            set => pregunta = value;
-        }
-        public List<RespuestaPosible> RespuestaPosible 
-
-        {   get => respuesta;
-            set => respuesta = value;
-        }
         public string getDescripcion()
         {
-            return this.pregunta;
+            return pregunta;
         }
         public string getEncuesta()
         {
             return this.Encuesta.getDescripcionEncuesta();
         }
+
     }
 }

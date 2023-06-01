@@ -67,7 +67,7 @@ namespace proyectoBase.Gestor
 
 			//cambios de estados para la llamada 3
 			CambioEstado cambioEstado31 = new CambioEstado(DateTime.Parse("2023-05-12"), estado1);
-			CambioEstado cambioEstado32 = new CambioEstado(DateTime.Parse("2023-06-13"), estado2);
+			CambioEstado cambioEstado32 = new CambioEstado(DateTime.Parse("2023-05-13"), estado2);
 			List<CambioEstado> cambioEstado3 = new List <CambioEstado>();
 			cambioEstado3.Add(cambioEstado31);
 			cambioEstado3.Add(cambioEstado32);
@@ -80,8 +80,8 @@ namespace proyectoBase.Gestor
 			cambioEstado4.Add(cambioEstado42);
 
 			// Cambios de estados para la llamada 5
-			CambioEstado cambioEstado51 = new CambioEstado(DateTime.Parse("2023-06-20"), estado1);
-			CambioEstado cambioEstado52 = new CambioEstado(DateTime.Parse("2023-07-01"), estado2);
+			CambioEstado cambioEstado51 = new CambioEstado(DateTime.Parse("2023-05-20"), estado1);
+			CambioEstado cambioEstado52 = new CambioEstado(DateTime.Parse("2023-05-21"), estado2);
 			List<CambioEstado> cambioEstado5 = new List<CambioEstado>();
 			cambioEstado5.Add(cambioEstado51);
 			cambioEstado5.Add(cambioEstado52);
